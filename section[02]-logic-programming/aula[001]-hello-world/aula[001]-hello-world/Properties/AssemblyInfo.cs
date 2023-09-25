@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Aula[000]-hello-world")]
+[assembly: AssemblyTitle("aula[001]-hello-world")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("Aula[000]-hello-world")]
+[assembly: AssemblyProduct("aula[001]-hello-world")]
 [assembly: AssemblyCopyright("Copyright ©  2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("1ab7a6d3-e3af-43a3-947c-4baa0d3c54fb")]
+[assembly: Guid("2a50de36-9812-4ed4-9ea5-afac3b95ed9c")]
 
 // Version information for an assembly consists of the following four values:
 //
