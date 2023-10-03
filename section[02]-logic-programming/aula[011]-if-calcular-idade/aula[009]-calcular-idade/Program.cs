@@ -10,25 +10,27 @@ namespace aula_009__calcular_idade
     {
         static void Main(string[] args)
         {
+            // coleta o ano atual do pc
             int atual = DateTime.Now.Year;
             int nasc = 0;
             int idade = 0;
 
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+
             Console.Write("Digite seu ano de nascimento: ");
             nasc = Convert.ToInt32(Console.ReadLine());
+
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 
             if (nasc <= atual) {
                 idade = atual - nasc;
 
                 Console.WriteLine("Sua idade atual em {0} é de: {1} ano(s)", atual, idade);
-                Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             } else {
                 Console.WriteLine("Digite um ano de nascimento valido");
-                Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             }
 
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             Console.ReadKey();
         }
     }
