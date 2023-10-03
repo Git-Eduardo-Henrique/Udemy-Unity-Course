@@ -20,9 +20,7 @@ namespace aula_009__calcular_idade
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 
             idade = atual - nasc;
-            Console.WriteLine("{0} - {1} = {2}", atual, nasc, idade);
            
-
             Console.WriteLine("Sua idade atual em {0} é de: {1} anos", atual, idade);
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 
