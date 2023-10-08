@@ -25,6 +25,7 @@ namespace aula_023__2__fatorial
         public static void DividirNumeros(int num1, int num2) {
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             Console.WriteLine("{0} / {1} = {2}", num1, num2, num1 / num2);
+            Console.WriteLine("resto da divisão: {0}", num1 % num2);
         }
 
         public static void VeriPrimo(int num) {
