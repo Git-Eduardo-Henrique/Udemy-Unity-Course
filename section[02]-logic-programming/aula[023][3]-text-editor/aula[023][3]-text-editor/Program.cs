@@ -9,8 +9,22 @@ namespace aula_023__3__text_editor
 {
     internal class Program
     {
+        public static void WhiteText(string arquivo, string text, bool transcrever) {
+            try {
+                StreamWriter gravar = new StreamWriter(arquivo, transcrever);
+                gravar.WriteLine(text);
+                gravar.Close();
+            } catch (Exception ex) {
+                Console.WriteLine(ex.Message);
+            }
+            
+        }
+
         public static void ShowText(string arquivo) {
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+
             string line = "";
+
             try {
                 StreamReader text = new StreamReader(arquivo);
 
@@ -37,7 +51,7 @@ namespace aula_023__3__text_editor
             Console.Clear();
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             Console.WriteLine("[ 0 ] - sair\n[ 1 ] - abrir/criar arquivo\n[ 2 ] - Exibir texto");
-            Console.WriteLine("[ 3 ] - gravar texto\n[ 4 ] - gravar novo texto");
+            Console.WriteLine("[ 3 ] - sobrescrever texto\n[ 4 ] - adicionar novo texto");
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 
             Console.Write("qual sua opção? ");
@@ -49,7 +63,7 @@ namespace aula_023__3__text_editor
         {
             int opt = 1;
 
-            string arquivo = "";
+            string arquivo = "", text = "";
 
             while (opt != 0) {
                 opt = ShowMenu();
@@ -64,13 +78,25 @@ namespace aula_023__3__text_editor
                         break;
 
                     case 2:
+                        ShowText(arquivo);
+                        break;
+                    case 3:
                         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 
-                        Console.Write("digite o nome do arquivo: ");
-                        arquivo = Console.ReadLine();
+                        Console.Write("digite o seu texto: ");
+                        text = Console.ReadLine();
 
+                        WhiteText(arquivo, text, false);
+                        ShowText(arquivo);
+                        break;
+
+                    case 4:
                         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
 
+                        Console.Write("digite o seu texto: ");
+                        text = Console.ReadLine();
+
+                        WhiteText(arquivo, text, true);
                         ShowText(arquivo);
                         break;
                 }
