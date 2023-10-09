@@ -8,11 +8,17 @@ namespace projeto_agenda
 {
     internal class Program
     {
-        public static void ShowData(string[] names, string[] emails) {
+        public static void ShowData(string[] names, string[] emails, int cont_index) {
             Console.Clear();
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            Console.WriteLine("nomes: {0}\nemails: {1}", names, emails);
-            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+
+            for (int cont = 0; cont <= cont_index; cont++)
+            {
+                Console.WriteLine("index: {0}", cont);
+                Console.WriteLine("nome: {0}\nemail: {1}", names[cont], emails[cont]);
+            }
+
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=\n");
             Console.ReadKey();
         }
         public static int ShowMenu() {
@@ -31,14 +37,17 @@ namespace projeto_agenda
             string[] names = new string[200];
             string[] emails = new string[200];
 
-            int opt = 1;
+            int opt = 1, cont_index = 0;
+
+            names[0] = "Eduardo Henrique";
+            emails[0] = "eduardosus@gmail.com";
 
             while (opt != 0) {
                 opt = ShowMenu();
 
                 switch (opt) {
                     case 1:
-                        ShowData(names, emails);
+                        ShowData(names, emails, cont_index);
                         break;
                     case 2:
                         break;
