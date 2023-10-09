@@ -8,13 +8,28 @@ namespace projeto_agenda
 {
     internal class Program
     {
-        public static void InsertData(string name, string[] names, string email, string[] emails, int index) {
-            names[index] = name;
-            emails[index] = email;
-
+        // ref = faz com que possa alterar a variavel original com a passada
+        public static void InsertData(ref string[] names, ref string[] emails, ref int index) {
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-            Console.WriteLine("nome adicionado no index {0}: {1}", index, names[index]);
-            Console.WriteLine("email adicionado no index {0}: {1}", index, emails[index]);
+            Console.Write("digite o nome: ");
+            string name = Console.ReadLine();
+
+            Console.Write("digite o email: ");
+            string email = Console.ReadLine();
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+
+            int pos = LocateItems(emails, index, email);
+
+            if ( pos == -1) {
+                index++;
+                names[index] = name;
+                emails[index] = email;
+                Console.WriteLine("nome adicionado no index {0}: {1}", index, names[index]);
+                Console.WriteLine("email adicionado no index {0}: {1}", index, emails[index]);
+                
+            } else {
+                Console.WriteLine("email já cadastrado!!!!");
+            }
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             Console.ReadKey();
         }
@@ -35,6 +50,17 @@ namespace projeto_agenda
             }
             Console.ReadKey();
         }
+        public static int LocateItems(string[] emails, int cont_index, string email) {
+            int pos = -1;
+
+            for (int cont = 0; cont <= cont_index; cont++) { 
+                if (emails[cont] == email) {
+                    pos = cont;
+                }
+            }
+
+            return pos;
+        }
         public static int ShowMenu() {
             Console.Clear();
 
@@ -51,13 +77,12 @@ namespace projeto_agenda
         }
         static void Main(string[] args)
         {
-            string name = "";
             string email = "";
 
             string[] names = new string[200];
             string[] emails = new string[200];
 
-            int opt = 1, cont_index = -1;
+            int opt = 1, cont_index = -1, pos = -1;
 
             while (opt != 0) {
                 opt = ShowMenu();
@@ -67,23 +92,29 @@ namespace projeto_agenda
                         ShowData(names, emails, cont_index);
                         break;
                     case 2:
-                        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-                        Console.Write("digite o nome: ");
-                        name = Console.ReadLine();
-
-                        Console.Write("digite o email: ");
-                        email = Console.ReadLine();
-                        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
-
-                        cont_index++;
-
-                        InsertData(name, names, email, emails, cont_index);
+                        InsertData(ref names, ref emails, ref cont_index);
                         break;
                     case 3:
                         break;
                     case 4:
                         break;
                     case 5:
+                        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+                        Console.Write("Digite o email do contato: ");
+                        email = Console.ReadLine();
+                        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+
+                        pos = LocateItems(emails, cont_index, email);
+
+                        if (pos != -1) {
+                            Console.WriteLine("index: {0}\nnome: {1}\nemail: {2}", pos, names[pos], emails[pos]);
+                        } else {
+                            Console.WriteLine("Email errado ou não cadastrado!");
+                        }
+
+                        Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+                        Console.ReadKey();
+
                         break;
                 }
             }
