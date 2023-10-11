@@ -50,6 +50,31 @@ namespace projeto_agenda
             }
             Console.ReadKey();
         }
+        public static void ChangeData(string[] names, string[] emails, int index) {
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+            Console.Write("Digite o email do contato: ");
+            string email = Console.ReadLine();
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+
+            int pos = LocateItems(emails, index, email);
+
+            if (pos != -1)
+            {
+                Console.Write("digite o novo nome: ");
+                names[index] = Console.ReadLine();
+
+                Console.Write("digite o novo email: ");
+                emails[index] = Console.ReadLine();
+            }
+            else
+            {
+                Console.WriteLine("Email errado ou não cadastrado!");
+            }
+
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+            Console.ReadKey();
+            
+        }
         public static int LocateItems(string[] emails, int cont_index, string email) {
             int pos = -1;
 
@@ -91,13 +116,18 @@ namespace projeto_agenda
                     case 1:
                         ShowData(names, emails, cont_index);
                         break;
+
                     case 2:
                         InsertData(ref names, ref emails, ref cont_index);
                         break;
+
                     case 3:
+                        ChangeData(names, emails, cont_index);
                         break;
+
                     case 4:
                         break;
+
                     case 5:
                         Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                         Console.Write("Digite o email do contato: ");
