@@ -75,6 +75,35 @@ namespace projeto_agenda
             Console.ReadKey();
             
         }
+        public static void DeleteData(ref string[] names, ref string[] emails, ref int index) {
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+            Console.Write("Digite o email do contato: ");
+            string email = Console.ReadLine();
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+
+            int pos = LocateItems(emails, index, email);
+
+            if (pos != -1)
+            {
+                Console.WriteLine("index {0} deletado {1} | {2}", pos, names[pos], emails[pos]);
+
+                for (int i = pos; i < index - 1; i++)
+                {
+                    names[i] = names[i + 1];
+                    emails[i] = emails[i + 1];
+                }
+
+                index--;
+            }
+            else
+            {
+                Console.WriteLine("Email errado ou não cadastrado!");
+            }
+
+            Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+            Console.ReadKey();
+        }
+
         public static int LocateItems(string[] emails, int cont_index, string email) {
             int pos = -1;
 
@@ -126,6 +155,7 @@ namespace projeto_agenda
                         break;
 
                     case 4:
+                        DeleteData(ref names, ref emails, ref cont_index);
                         break;
 
                     case 5:
