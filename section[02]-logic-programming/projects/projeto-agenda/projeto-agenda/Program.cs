@@ -138,6 +138,9 @@ namespace projeto_agenda
 
             int opt = 1, cont_index = -1, pos = -1;
 
+            backup.archive = "data.txt";
+            //backup.RecoverData();
+
             while (opt != 0) {
                 opt = ShowMenu();
 
@@ -179,6 +182,7 @@ namespace projeto_agenda
                 }
             }
 
+            backup.UpdateData(ref names, ref emails, ref cont_index);
         }
     }
 }
