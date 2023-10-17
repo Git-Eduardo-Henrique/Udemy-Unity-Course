@@ -11,32 +11,39 @@ namespace bichinho_virtual
         static void Main(string[] args)
         {
             string name = "";
-            int alimentado = 100;
-            int limpeza = 100;
-            int felicidade = 100;
+            int alimentado = 100, limpeza = 100, felicidade = 100, opt = -1;
+            bool rodando = true;
 
-            int opt = -1;
+            Random rand = new Random();
 
-            if ( name == "") {
-                Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+            in_game.veri_name(ref name);
 
-                Console.Write("Olá meu novo dono :D, Qual o meu nome? ", name);
-                name = Console.ReadLine();
+            while (rodando) {
+                opt = in_game.show_menu(rand, name, alimentado, limpeza, felicidade);
 
-                Console.Clear();
-            }
-            
-            while (true) {
-                opt = in_game.show_menu(name, alimentado, limpeza, felicidade);
+                in_game.change_status(rand, ref alimentado, ref limpeza, ref felicidade);
 
                 switch (opt) {
                     case 0:
+                        rodando = false;
                         break;
                     case 1:
+                        felicidade += rand.Next(20);
+                        if (felicidade > 100) {
+                            felicidade = 100;
+                        }
                         break;
                     case 2:
+                        alimentado += rand.Next(20);
+                        if (alimentado > 100) {
+                            alimentado = 100;
+                        }
                         break;
                     case 3:
+                        limpeza += rand.Next(20);
+                        if (limpeza > 100) {
+                            limpeza = 100;
+                        }
                         break;
                 }
             }
