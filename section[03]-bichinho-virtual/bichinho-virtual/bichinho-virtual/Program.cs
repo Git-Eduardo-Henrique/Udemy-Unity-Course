@@ -11,6 +11,14 @@ namespace bichinho_virtual
         static void Main(string[] args)
         {
             string name = "";
+
+            string[] texts = new string[5];
+            texts[0] = "Olá dono, fiquei muito feliz e você estar aqui hoje!!!";
+            texts[1] = "Hoje foi muito legal, só não liga para a janela quebrada ;)";
+            texts[2] = "Que legal você ter aparecido aqui hoje";
+            texts[3] = "Adorei brincar hoje, pena que você não viu";
+            texts[4] = "Posso ir na rua? não? :(";
+
             int alimentado = 100, limpeza = 100, felicidade = 100, opt = -1;
             bool rodando = true;
 
@@ -19,7 +27,7 @@ namespace bichinho_virtual
             in_game.veri_name(ref name);
 
             while (rodando) {
-                opt = in_game.show_menu(rand, name, alimentado, limpeza, felicidade);
+                opt = in_game.show_menu(rand, name, alimentado, limpeza, felicidade, texts);
 
                 in_game.change_status(rand, ref alimentado, ref limpeza, ref felicidade);
 

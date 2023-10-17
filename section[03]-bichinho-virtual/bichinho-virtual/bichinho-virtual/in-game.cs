@@ -25,10 +25,15 @@ namespace bichinho_virtual
                 Console.WriteLine(message);
             }
         }
-        public static int show_menu(Random rand, string name, int alimentado, int limpo, int feliz) {
+        public static string random_texts(Random rand, string[] texts) {
+            return texts[rand.Next(texts.Length)];
+        }
+        public static int show_menu(Random rand, string name, int alimentado, int limpo, int feliz, string[] texts) {
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             Console.WriteLine("_______________¶¶¶¶¶¶\r\n__________¶¶¶¶¶¶¶¶__¶¶\r\n_____¶¶¶¶¶¶¶¶¶¶¶¶¶¶ ¶¶\r\n_¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\r\n¶¶¶__¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\r\n_¶¶ ¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶\r\n___ ¶¶¶¶¶¶¶¶¶¶¶ [█]¶¶¶¶¶\r\n____¶¶¶¶¶ [█] ¶¶¶¶¶¶¶¶¶¶\r\n_____¶¶¶¶¶¶¶`▼´¶¶¶¶¶¶\r\n______¶¶¶¶¶¶¶·♥·¶¶¶¶¶\r\n__¤’¤’¤’¤’¤’¤’¤¶¶¶¶¶¶¤’¤’¤’¤’¤’¤’¤\r\n__¶¶¶¶¶’¤’¤’¤’¤’¤I T.’¤’¤’¤’¶¶¶¶¶¶\r\n¶¶¶¶¶¶¶¶¤’¤’¤’¤’¤’¤’¤’¤’¤¶¶¶¶¶¶¶¶\r\n¶¶____ ¶¶¶¶¶’¤’¤’¤’¤’¶¶¶¶¶____ ¶¶\r\n¶¶_____ ¶¶¶¶¶¶¶¶¶¶¶¶¶¶¶____¶¶\r\n_¶¶___¶¶¶¶¶________¶¶¶¶___¶¶\r\n__¶¶¶¶¶¶¶¶___________¶¶¶¶¶¶\r\n(♥)¤ª˜¨¨¨¨˜ª¤(♥)¤ª˜¨¨¨¨˜ª¤(♥) \r\n");
             Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+
+            Console.WriteLine(random_texts(rand, texts));
 
             check_status(rand, feliz, "Não vamos brincar?\nEstou um pouco entediado");
             check_status(rand, limpo, "Estou um pouco sujo\nUm banho seria muito bom");
