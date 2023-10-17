@@ -54,6 +54,14 @@ namespace bichinho_virtual
                         }
                         break;
                 }
+                if (alimentado <= 0 || limpeza <= 0 || felicidade <= 0) {
+                    Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
+                    Console.WriteLine("Você não cuidou de mim..... porque dono?");
+                    Console.WriteLine("=-= {0} morreu... =-=", name);
+                    Console.ReadKey();
+
+                    rodando = false;
+                }
             }
         }
     }
