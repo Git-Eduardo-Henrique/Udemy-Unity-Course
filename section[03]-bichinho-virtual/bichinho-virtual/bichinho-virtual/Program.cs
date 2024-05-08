@@ -10,6 +10,16 @@ namespace bichinho_virtual
 {
     internal class Program
     {
+        public static void SavePet( string file, string name, int alimentado, int limpeza, int felicidade )
+        {
+            string file_content = name + Environment.NewLine;
+            file_content += alimentado + Environment.NewLine;
+            file_content += limpeza + Environment.NewLine;
+            file_content += felicidade + Environment.NewLine;
+
+            // grava todo o texto e criar arquivo se não tiver
+            File.WriteAllText(file, file_content);
+        }
         static void Main(string[] args)
         {
             string name = "";
@@ -25,7 +35,10 @@ namespace bichinho_virtual
 
             int alimentado = 100, limpeza = 100, felicidade = 100;
 
-            string file = "C:\\Users\\Eduardo\\Documents\\GitHub\\Udemy-Unity-Course\\section[03]-bichinho-virtual\\bichinho-virtual\\bichinho-virtual\\" + name + ".txt";
+            // Coleta o caminho da pasta do projeto
+            string dir = Environment.CurrentDirectory + "\\";
+
+            string file = dir + name + ".txt";
             if (File.Exists(file))
             {
                 string[] dados = File.ReadAllLines(file);
@@ -40,7 +53,9 @@ namespace bichinho_virtual
                     felicidade = 100;
                 }
             } else {
-                Console.WriteLine("Não foi" + file);
+                Console.WriteLine(file);
+                Console.WriteLine("Nenhum Save desse Pet encontrado\nUm novo save sera criado ao sair");
+                Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
             }
 
             int opt = -1;
@@ -56,6 +71,7 @@ namespace bichinho_virtual
                 switch (opt) {
                     case 0:
                         rodando = false;
+
                         break;
                     case 1:
                         felicidade += rand.Next(20);
@@ -79,12 +95,15 @@ namespace bichinho_virtual
                 if (alimentado <= 0 || limpeza <= 0 || felicidade <= 0) {
                     Console.WriteLine("=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=");
                     Console.WriteLine("Você não cuidou de mim..... porque dono?");
-                    Console.WriteLine("=-= {0} morreu... =-=", name);
+                    Console.WriteLine("=-= {0} irá ser cuidado pelo assistente virtual... =-=", name);
+
                     Console.ReadKey();
 
                     rodando = false;
                 }
             }
+
+            SavePet(file, name, alimentado, limpeza, felicidade);
         }
     }
 }
